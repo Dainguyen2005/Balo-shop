@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <title>Quản trị — Balo Nhà Mình</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/admin.css">
+  <script src="/admin.js" defer></script>
+</head>
+<body>
+  <div class="announcement">KHU VỰC QUẢN TRỊ · BALO NHÀ MÌNH</div>
+  <header class="site-header admin-header">
+    <a class="brand" href="/" aria-label="Về cửa hàng">
+      <span class="brand-mark" aria-hidden="true">B.</span>
+      <span>BALO NHÀ MÌNH<span class="brand-caption">TRANG QUẢN TRỊ</span></span>
+    </a>
+    <div class="header-actions">
+      <a class="account-trigger" href="/">Về cửa hàng</a>
+      <span class="admin-user" id="admin-user">Đang kiểm tra phiên...</span>
+      <button class="account-trigger" id="admin-logout" type="button">Đăng xuất</button>
+    </div>
+  </header>
+  <main class="admin-main">
+    <section class="admin-welcome">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-line"></span> XIN CHÀO, NHÀ MÌNH</p>
+        <h1>Quản lý cửa hàng <em>thật nhẹ nhàng.</em></h1>
+      </div>
+      <p class="admin-welcome-note">Sản phẩm, đơn hàng và xác nhận chuyển khoản — tất cả ở đây.</p>
+    </section>
+
+    <div class="admin-tabs" role="tablist" aria-label="Chọn mục quản trị">
+      <button class="admin-tab is-active" id="products-tab" type="button" role="tab" aria-selected="true" data-panel="products-panel">Sản phẩm <span id="admin-product-count">0</span></button>
+      <button class="admin-tab" id="orders-tab" type="button" role="tab" aria-selected="false" data-panel="orders-panel">Đơn hàng <span id="admin-order-count">0</span></button>
+    </div>
+    <div class="admin-message" id="admin-message" role="status"></div>
+
+    <section class="admin-panel" id="products-panel" aria-labelledby="products-tab">
+      <div class="admin-section-heading">
+        <div><p class="eyebrow">KHO HÀNG NHÀ MÌNH</p><h2>Sản phẩm</h2></div>
+        <button class="button button-dark" id="new-product" type="button">Thêm sản phẩm <span aria-hidden="true">+</span></button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Sản phẩm</th><th>Giá</th><th>Tồn kho</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+          <tbody id="admin-products"></tbody>
+        </table>
+      </div>
+      <div class="admin-empty" id="products-empty" hidden>Chưa có sản phẩm nào. Thêm sản phẩm đầu tiên nhé.</div>
+    </section>
+
+    <section class="admin-panel" id="orders-panel" aria-labelledby="orders-tab" hidden>
+      <div class="admin-section-heading">
+        <div><p class="eyebrow">ĐƠN HÀNG MỚI NHẤT</p><h2>Đơn hàng</h2></div>
+        <button class="button button-outline" id="refresh-orders" type="button">Làm mới <span aria-hidden="true">↻</span></button>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table order-table">
+          <thead><tr><th>Mã đơn</th><th>Khách hàng</th><th>Thanh toán</th><th>Tổng tiền</th><th>Trạng thái</th><th>Thao tác</th></tr></thead>
+          <tbody id="admin-orders"></tbody>
+        </table>
+      </div>
+      <div class="admin-empty" id="orders-empty" hidden>Chưa có đơn hàng.</div>
+    </section>
+  </main>
+  <footer class="site-footer"><a class="text-link" href="/">← Quay lại cửa hàng</a><span class="footer-copy">Balo Nhà Mình · Khu vực quản trị</span></footer>
+
+  <div class="admin-modal-backdrop" id="product-modal-backdrop" hidden></div>
+  <section class="admin-modal" id="product-modal" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" hidden>
+    <div class="admin-modal-header"><div><p class="eyebrow">KHO HÀNG NHÀ MÌNH</p><h2 id="product-modal-title">Thêm sản phẩm</h2></div><button class="icon-button" id="close-product-modal" type="button" aria-label="Đóng">×</button></div>
+    <form class="product-form" id="product-form">
+      <label>Tên sản phẩm<input name="name" required maxlength="160" placeholder="Ví dụ: Balo City Explorer"></label>
+      <label>Mô tả<textarea name="description" rows="3" required maxlength="1000" placeholder="Mô tả ngắn về balo"></textarea></label>
+      <label>Đường dẫn ảnh<input name="imageUrl" type="url" maxlength="1000" placeholder="https://..."></label>
+      <div class="form-row">
+        <label>Giá bán (đ)<input name="price" type="number" min="1" step="1" required placeholder="590000"></label>
+        <label>Số lượng tồn<input name="stock" type="number" min="0" step="1" required placeholder="20"></label>
+      </div>
+      <div class="admin-form-error" id="product-form-error" role="alert"></div>
+      <button class="button button-dark" id="save-product" type="submit">Lưu sản phẩm <span aria-hidden="true">↗</span></button>
+    </form>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

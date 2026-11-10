@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="Khám phá balo đi học, đi làm và du lịch tại Balo Nhà Mình.">
+  <title>Balo Nhà Mình — Đi đâu cũng có nhau</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="announcement">FREESHIP cho đơn hàng từ 1.000.000đ · Đổi trả miễn phí trong 7 ngày</div>
+
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Balo Nhà Mình, trang chủ">
+      <span class="brand-mark" aria-hidden="true">B.</span>
+      <span>BALO NHÀ MÌNH<span class="brand-caption">ĐI ĐÂU CŨNG CÓ NHAU</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <a href="#san-pham">Sản phẩm</a>
+      <a href="#cau-chuyen">Câu chuyện</a>
+      <a href="#footer">Liên hệ</a>
+      <a href="/admin.html" id="admin-link" hidden>Quản trị</a>
+    </nav>
+    <div class="header-actions">
+      <button class="account-trigger" id="account-trigger" type="button">Đăng nhập</button>
+      <a class="account-trigger admin-mobile-link" id="admin-link-mobile" href="/admin.html" hidden>Quản trị</a>
+      <button class="account-trigger logout-trigger" id="logout-trigger" type="button" hidden>Đăng xuất</button>
+      <button class="cart-trigger" id="open-cart" type="button" aria-label="Mở giỏ hàng">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 11.1a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 2-1.6L21 8H6M10 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+        <span>Giỏ hàng</span>
+        <span class="cart-count" id="cart-count" aria-live="polite">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> NHẸ NHÀNG TRÊN MỌI HÀNH TRÌNH</p>
+        <h1 id="hero-title">Mang theo<br>điều <em>mình thích.</em></h1>
+        <p class="hero-description">Chiếc balo vừa vặn cho những ngày đi học, những buổi cà phê và cả chuyến đi xa bất chợt.</p>
+        <a class="button button-dark" href="#san-pham">Khám phá bộ sưu tập <span aria-hidden="true">↗</span></a>
+        <div class="hero-note"><span class="note-stars" aria-hidden="true">★★★★★</span> Được chọn bởi hơn 2.000 người bạn</div>
+      </div>
+      <div class="hero-art">
+        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="Balo màu be trong chuyến đi ngoài trời">
+        <div class="hero-sticker"><span>ĐI<br>THÔI!</span><span class="sticker-arrow" aria-hidden="true">↗</span></div>
+        <div class="hero-image-caption"><span>BỘ SƯU TẬP MỚI</span><span>01 / 03</span></div>
+      </div>
+      <div class="hero-side-label" aria-hidden="true">THIẾT KẾ CHO CHUYẾN ĐI CỦA BẠN</div>
+    </section>
+
+    <section class="benefits" aria-label="Cam kết của cửa hàng">
+      <div><span class="benefit-icon" aria-hidden="true">✳</span><span><strong>Chọn kỹ từng chiếc</strong><small>Chất liệu bền, dùng lâu</small></span></div>
+      <div><span class="benefit-icon" aria-hidden="true">↺</span><span><strong>Đổi trả dễ dàng</strong><small>Trong vòng 7 ngày</small></span></div>
+      <div><span class="benefit-icon" aria-hidden="true">♡</span><span><strong>Gói hàng tử tế</strong><small>Trao tận tay bạn</small></span></div>
+    </section>
+
+    <section class="products-section" id="san-pham" aria-labelledby="products-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> TÌM CHIẾC BALO CỦA BẠN</p>
+          <h2 id="products-title">Một chiếc cho <em>mọi ngày.</em></h2>
+        </div>
+        <label class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></svg>
+          <input id="product-search" type="search" placeholder="Tìm chiếc balo..." aria-label="Tìm kiếm balo">
+          <kbd>Ctrl K</kbd>
+        </label>
+      </div>
+      <div class="product-toolbar">
+        <p id="product-count" aria-live="polite">Đang tìm những chiếc balo phù hợp...</p>
+        <label class="sort-control">Sắp xếp
+          <select id="sort-products" aria-label="Sắp xếp sản phẩm">
+            <option value="featured">Nổi bật</option>
+            <option value="price-low">Giá: thấp đến cao</option>
+            <option value="price-high">Giá: cao đến thấp</option>
+            <option value="name">Tên sản phẩm</option>
+          </select>
+        </label>
+      </div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <div class="empty-products" id="empty-products" hidden>
+        <span aria-hidden="true">⌕</span>
+        <h3>Chưa tìm thấy chiếc balo này</h3>
+        <p>Thử một từ khóa khác xem sao nhé.</p>
+      </div>
+    </section>
+
+    <section class="story-section" id="cau-chuyen">
+      <div class="story-image">
+        <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Con đường xanh dẫn lối cho một chuyến đi">
+        <span class="story-image-tag">CHUYẾN ĐI NÀO CŨNG ĐÁNG NHỚ</span>
+      </div>
+      <div class="story-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> MỘT CHÚT VỀ NHÀ MÌNH</p>
+        <h2>Balo tốt là chiếc balo <em>đi cùng bạn.</em></h2>
+        <p>Tụi mình tin rằng một chiếc balo hay không chỉ để đựng đồ. Nó theo bạn đến lớp, qua những ngày bận rộn, và trên cả những chuyến đi chưa kịp lên kế hoạch.</p>
+        <a class="text-link" href="#san-pham">Chọn chiếc balo của bạn <span aria-hidden="true">→</span></a>
+        <span class="story-doodle" aria-hidden="true">đi thôi!</span>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div><p class="eyebrow"><span class="eyebrow-line"></span> CHUYẾN ĐI ĐANG ĐỢI BẠN</p><h2>Sẵn sàng mang theo <em>điều mình thích?</em></h2></div>
+      <a class="button button-dark" href="#san-pham">Chọn chiếc balo của bạn <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <a class="brand footer-brand" href="/" aria-label="Balo Nhà Mình, về đầu trang">
+      <span class="brand-mark" aria-hidden="true">B.</span>
+      <span>BALO NHÀ MÌNH<span class="brand-caption">ĐI ĐÂU CŨNG CÓ NHAU</span></span>
+    </a>
+    <p>Gói ghém những chuyến đi nhỏ,<br>và cả những niềm vui thật to.</p>
+    <span class="footer-copy">© 2026 Balo Nhà Mình</span>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true">
+    <div class="drawer-header">
+      <div><p class="eyebrow">MANG THEO GÌ NÀO?</p><h2 id="cart-title">Giỏ hàng <span id="drawer-count">(0)</span></h2></div>
+      <button class="icon-button" id="close-cart" type="button" aria-label="Đóng giỏ hàng">×</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-empty" id="cart-empty"><span aria-hidden="true">♡</span><h3>Giỏ đang đợi bạn</h3><p>Thêm một chiếc balo xinh vào nhé.</p></div>
+    <form class="checkout-form" id="checkout-form" hidden>
+      <div class="checkout-heading"><p class="eyebrow">SẮP ĐẾN TAY BẠN RỒI</p><h3>Thông tin nhận hàng</h3></div>
+      <label>Họ và tên<input name="customerName" autocomplete="name" required maxlength="120" placeholder="Tên người nhận"></label>
+      <label>Email<input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="ban@email.com"></label>
+      <label>Số điện thoại<input name="phone" type="tel" autocomplete="tel" required maxlength="30" placeholder="090 000 0000"></label>
+      <label>Địa chỉ nhận hàng<textarea name="shippingAddress" autocomplete="street-address" required maxlength="500" rows="2" placeholder="Số nhà, đường, phường/xã, tỉnh/thành"></textarea></label>
+      <fieldset class="payment-methods">
+        <legend>Phương thức thanh toán</legend>
+        <label class="payment-choice">
+          <input type="radio" name="paymentMethod" value="BANK_TRANSFER_DEMO">
+          <span class="payment-choice-copy"><strong>Chuyển khoản ngân hàng (demo)</strong><small>Nhập thông tin giả lập và mô phỏng giao dịch, không chuyển tiền thật</small></span>
+          <span class="payment-radio" aria-hidden="true"></span>
+        </label>
+        <div class="bank-details" id="bank-details">
+          <p class="bank-unconfigured" id="bank-unconfigured" hidden>Đây là thông tin tài khoản minh họa, không dùng để chuyển tiền.</p>
+          <dl id="bank-account-details" hidden>
+            <div><dt>Ngân hàng</dt><dd id="bank-name"></dd></div>
+            <div><dt>Số tài khoản</dt><dd id="bank-account-number"></dd></div>
+            <div><dt>Chủ tài khoản</dt><dd id="bank-account-holder"></dd></div>
+            <div><dt>Chế độ</dt><dd>Demo — không có giao dịch thật</dd></div>
+          </dl>
+        </div>
+        <div class="payer-details" id="bank-payer-details" hidden>
+          <label>Ngân hàng của bạn
+            <input name="payerBankName" autocomplete="off" maxlength="80" placeholder="Ví dụ: Ngân hàng demo">
+          </label>
+          <label>Tên người chuyển khoản
+            <input name="payerAccountName" autocomplete="name" maxlength="120" placeholder="Tên chủ tài khoản gửi">
+          </label>
+          <label>Số tài khoản demo
+            <input name="demoAccountNumber" inputmode="numeric" autocomplete="off" maxlength="20" pattern="[0-9]{6,20}" placeholder="Chỉ nhập số giả lập">
+          </label>
+          <small>Chỉ dùng dữ liệu giả lập. Số tài khoản đầy đủ không được gửi lên máy chủ hoặc lưu lại. Tuyệt đối không nhập mật khẩu, PIN hoặc OTP.</small>
+        </div>
+        <label class="payment-choice">
+          <input type="radio" name="paymentMethod" value="VNPAY_DEMO">
+          <span class="payment-choice-copy"><strong>VNPay (demo)</strong><small>Mô phỏng thanh toán VNPay, không kết nối cổng thật và không yêu cầu thông tin thẻ/tài khoản</small></span>
+          <span class="payment-radio" aria-hidden="true"></span>
+        </label>
+        <label class="payment-choice">
+          <input type="radio" name="paymentMethod" value="CASH_ON_DELIVERY" checked>
+          <span class="payment-choice-copy"><strong>Thanh toán khi nhận hàng (COD)</strong><small>Trả tiền cho đơn vị giao hàng khi nhận balo</small></span>
+          <span class="payment-radio" aria-hidden="true"></span>
+        </label>
+      </fieldset>
+      <button class="text-link back-to-cart" id="back-to-cart" type="button">← Quay lại giỏ hàng</button>
+      <div class="checkout-message" id="checkout-message" role="alert"></div>
+      <button class="button button-dark checkout-submit" id="checkout-submit" type="submit">Xác nhận đặt hàng <span aria-hidden="true">↗</span></button>
+    </form>
+    <div class="drawer-footer" id="drawer-footer">
+      <div class="subtotal-row"><span>Tạm tính</span><strong id="cart-total">0đ</strong></div>
+      <p>Phí giao hàng sẽ được xác nhận khi gọi bạn.</p>
+      <button class="button button-dark checkout-start" id="checkout-start" type="button">Tiến hành đặt hàng <span aria-hidden="true">↗</span></button>
+    </div>
+  </aside>
+  <div class="auth-backdrop" id="auth-backdrop" hidden></div>
+  <section class="auth-dialog" id="auth-dialog" role="dialog" aria-modal="true" aria-labelledby="auth-title" aria-hidden="true" hidden>
+    <button class="icon-button auth-close" id="close-auth" type="button" aria-label="Đóng đăng nhập">×</button>
+    <p class="eyebrow"><span class="eyebrow-line"></span> THÀNH VIÊN NHÀ MÌNH</p>
+    <h2 id="auth-title">Rất vui gặp lại <em>bạn.</em></h2>
+    <p class="auth-description" id="auth-description">Đăng nhập để tiếp tục đặt chiếc balo bạn yêu thích.</p>
+    <div class="auth-tabs" role="tablist" aria-label="Chọn đăng nhập hoặc tạo tài khoản">
+      <button class="auth-tab is-active" id="login-tab" type="button" role="tab" aria-selected="true" data-auth-mode="login">Đăng nhập</button>
+      <button class="auth-tab" id="register-tab" type="button" role="tab" aria-selected="false" data-auth-mode="register">Tạo tài khoản</button>
+    </div>
+    <form class="auth-form" id="auth-form">
+      <label id="auth-name-field" hidden>Họ và tên
+        <input name="fullName" autocomplete="name" maxlength="120" placeholder="Tên của bạn">
+      </label>
+      <label>Email
+        <input name="email" type="email" autocomplete="email" required maxlength="254" placeholder="ban@email.com">
+      </label>
+      <label>Mật khẩu
+        <input name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="72" placeholder="Ít nhất 8 ký tự">
+      </label>
+      <div class="auth-message" id="auth-message" role="alert"></div>
+      <button class="button button-dark auth-submit" id="auth-submit" type="submit">Đăng nhập <span aria-hidden="true">↗</span></button>
+    </form>
+    <p class="auth-privacy">Mật khẩu của bạn được mã hóa an toàn. Đặt hàng cần đăng nhập.</p>
+  </section>
+  <div class="order-confirmation-backdrop" id="order-confirmation-backdrop" hidden></div>
+  <section class="order-confirmation" id="order-confirmation" role="dialog" aria-modal="true" aria-labelledby="order-confirmation-title" aria-hidden="true" hidden>
+    <button class="icon-button order-confirmation-close" id="close-order-confirmation" type="button" aria-label="Đóng thông tin đơn hàng">×</button>
+    <p class="eyebrow"><span class="eyebrow-line"></span> NHÀ MÌNH ĐÃ NHẬN ĐƠN</p>
+    <h2 id="order-confirmation-title">Cảm ơn bạn <em>nhiều nhé!</em></h2>
+    <p class="confirmation-order-number">Mã đơn hàng <strong id="confirmation-order-id"></strong></p>
+    <p id="confirmation-message"></p>
+    <div class="demo-payment-confirmation" id="demo-payment-confirmation" hidden>
+      <p>Đây là thanh toán mô phỏng. Không có tiền thật được chuyển hay thu.</p>
+      <button class="button button-dark" id="demo-payment-success" type="button">Mô phỏng thanh toán thành công</button>
+    </div>
+    <div class="transfer-confirmation" id="transfer-confirmation" hidden>
+      <div class="transfer-total"><span>Số tiền cần chuyển</span><strong id="confirmation-total"></strong></div>
+      <dl>
+        <div><dt>Ngân hàng</dt><dd id="confirmation-bank-name"></dd></div>
+        <div><dt>Số tài khoản</dt><dd id="confirmation-account-number"></dd></div>
+        <div><dt>Chủ tài khoản</dt><dd id="confirmation-account-holder"></dd></div>
+        <div><dt>Nội dung chuyển khoản</dt><dd><strong id="confirmation-transfer-reference"></strong></dd></div>
+      </dl>
+      <p class="transfer-notice">Tài khoản trên chỉ để minh họa — không chuyển tiền thật. Dùng nút thanh toán thử để hoàn tất demo.</p>
+    </div>
+    <button class="button button-dark confirmation-done" id="confirmation-done" type="button">Tiếp tục mua sắm <span aria-hidden="true">↗</span></button>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
