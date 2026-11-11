@@ -22,7 +22,7 @@ Website hỗ trợ tìm kiếm, sắp xếp sản phẩm, thêm/xóa sản phẩ
 
 ## Kết nối MySQL và chuyển dữ liệu từ H2
 
-MySQL Connector/J đã được thêm vào dự án. Trên máy phát triển hiện tại, MySQL đang chạy tại `127.0.0.1:3307`. Cấu hình database bằng file `.env` cục bộ (đã được `.gitignore` loại trừ):
+MySQL Connector/J đã được thêm vào dự án. Trên máy phát triển hiện tại, MySQL được cấu hình tại `127.0.0.1:3307`; hãy đảm bảo dịch vụ MySQL đang chạy trước khi khởi động ứng dụng. Nếu dịch vụ dừng, các API cần đọc/ghi dữ liệu như danh sách sản phẩm và đặt hàng sẽ không hoạt động. Cấu hình database bằng file `.env` cục bộ (đã được `.gitignore` loại trừ):
 
 1. Sao chép `.env.example` thành `.env`.
 2. Điền `SHOP_DB_USERNAME` và `SHOP_DB_PASSWORD` cho tài khoản MySQL có quyền tạo database/bảng và ghi dữ liệu vào `balo_db`. Không gửi mật khẩu qua chat hoặc commit file `.env`.
@@ -62,7 +62,7 @@ Admin có thể thêm/sửa/ẩn/hiện lại sản phẩm, xem đơn hàng, c�
 
 ## Thanh toán demo
 
-Khách chọn VNPay (demo), chuyển khoản ngân hàng (demo) hoặc COD. Hai lựa chọn demo chỉ mô phỏng giao dịch, không kết nối VNPay/ngân hàng và không chuyển/thu tiền thật. Sau khi tạo đơn, khách có thể bấm “Mô phỏng thanh toán thành công” để cập nhật đơn demo thành `PAID`. Thông tin ngân hàng hiển thị là dữ liệu giả lập.
+Khách chọn VNPay (demo), chuyển khoản ngân hàng (demo) hoặc COD. Hai lựa chọn demo chỉ mô phỏng giao dịch, không kết nối VNPay/ngân hàng và không chuyển/thu tiền thật. Sau khi tạo đơn, khách có thể bấm “Mô phỏng thanh toán thành công” để cập nhật đơn demo thành `PAID`. Với chuyển khoản demo, mã QR chỉ chứa thông tin tham khảo của đơn và không phải mã thanh toán ngân hàng. Thông tin ngân hàng hiển thị là dữ liệu giả lập.
 
 Với chuyển khoản demo, khách nhập tên ngân hàng, tên chủ tài khoản và một số tài khoản giả lập (6–20 chữ số). Trình duyệt chỉ gửi 4 số cuối lên máy chủ; số đầy đủ không được lưu. Không yêu cầu/nhập số tài khoản thật, mật khẩu ngân hàng, PIN, OTP hoặc thông tin thẻ. VNPay demo không yêu cầu thông tin tài khoản/thẻ. COD vẫn ở trạng thái `PENDING_ON_DELIVERY`.
 
@@ -84,6 +84,7 @@ Với chuyển khoản demo, khách nhập tên ngân hàng, tên chủ tài kho
 | DELETE | `/api/carts/{cartId}/items/{productId}` | Xóa sản phẩm khỏi giỏ |
 | POST | `/api/carts/{cartId}/checkout` | Đặt hàng |
 | GET | `/api/orders/{id}` | Xem đơn hàng |
+| GET | `/api/orders/{id}/demo-transfer-qr` | Mã QR thông tin cho đơn chuyển khoản demo |
 | POST | `/api/orders/{id}/demo-payment` | Mô phỏng thanh toán thành công cho đơn VNPay/chuyển khoản demo |
 | GET | `/api/payments/options` | Các phương thức thanh toán và trạng thái cấu hình tài khoản |
 | GET/POST/PUT/DELETE | `/api/admin/products` | Quản lý sản phẩm (ADMIN) |

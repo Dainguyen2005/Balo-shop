@@ -291,6 +291,7 @@
         ? "Đơn hàng đang chờ thanh toán. Vui lòng chuyển khoản đúng số tiền và nội dung bên dưới."
         : "Đơn hàng COD đã được ghi nhận. Bạn thanh toán cho đơn vị giao hàng khi nhận balo.";
     $("#transfer-confirmation").hidden = !bankTransfer;
+    $("#demo-transfer-qr").hidden = !demoBankTransfer;
     elements.demoPaymentConfirmation.hidden = !demoPayment;
     elements.demoPaymentSuccess.hidden = false;
     elements.demoPaymentSuccess.disabled = false;
@@ -303,6 +304,9 @@
       $("#confirmation-account-holder").textContent = demoBankTransfer
         ? state.paymentOptions.demoAccountHolder : state.paymentOptions.accountHolder;
       $("#confirmation-transfer-reference").textContent = order.transferReference;
+    }
+    if (demoBankTransfer) {
+      $("#confirmation-transfer-qr").src = `/api/orders/${encodeURIComponent(order.id)}/demo-transfer-qr`;
     }
     elements.orderConfirmation.hidden = false;
     elements.orderConfirmation.setAttribute("aria-hidden", "false");

@@ -423,6 +423,16 @@ class BackpackShopApiTest {
         org.junit.jupiter.api.Assertions.assertEquals("1234", bankOrder.get("payerAccountLastFour").asText());
         org.junit.jupiter.api.Assertions.assertEquals("Demo Bank", bankOrder.get("payerBankName").asText());
 
+        String qrSvg = mvc.perform(get("/api/orders/{id}/demo-transfer-qr", bankOrderId)
+                        .session(customerSession))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+        org.junit.jupiter.api.Assertions.assertTrue(qrSvg.contains("<svg"));
+
+        mvc.perform(get("/api/orders/{id}/demo-transfer-qr", bankOrderId)
+                        .session(otherCustomerSession))
+                .andExpect(status().isNotFound());
+
         mvc.perform(post("/api/orders/{id}/demo-payment", bankOrderId)
                         .with(SecurityMockMvcRequestPostProcessors.csrf())
                         .session(otherCustomerSession))
